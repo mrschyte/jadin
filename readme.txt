@@ -1,0 +1,12 @@
+# Java Dynamic Instrumentation
+
+# Method 1
+java -javaagent:jadin.jar=classes.jar -cp example.jar com.example.Test
+
+# Method 2
+java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=9999 -jar example.jar
+java -jar agent.jar replacement.jar `pgrep -f Xdebug java`
+
+jdb -connect com.sun.jdi.SocketAttach:hostname=localhost,port=8888
+run
+
