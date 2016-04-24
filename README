@@ -5,7 +5,7 @@ java -javaagent:jadin.jar=classes.jar -cp example.jar com.example.Test
 
 # Method 2
 mv replacement.jar /tmp/classes.jar
-java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=9999 -jar example.jar
+java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8888 -jar example.jar
 java -jar agent.jar `pgrep -f Xdebug`
 
 jdb -connect com.sun.jdi.SocketAttach:hostname=localhost,port=8888
