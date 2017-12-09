@@ -1,13 +1,21 @@
 # Java Dynamic Instrumentation
 
-# Method 1
+# Building
+The project can be built using gradle. To build the application execute `gradle build`.
+
+# Running
+## Method 1 (Application startup)
 java -javaagent:jadin.jar=classes.jar -cp example.jar com.example.Test
 
-# Method 2
+## Method 2 (Attach to existing process)
+; Place the replacement jar into /tmp
 mv replacement.jar /tmp/classes.jar
+
+; Run your application with JDWP enabled
 java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8888 -jar example.jar
-java -jar agent.jar `pgrep -f Xdebug`
+java -jar agent.jar $(pgrep -f Xdebug)
 
-jdb -connect com.sun.jdi.SocketAttach:hostname=localhost,port=8888
-run
-
+; Resume the process 
+$ jdb -connect com.sun.jdi.SocketAttach:hostname=localhost,port=8888
+Initializing jdb ...                                                                                                                 
+> run
