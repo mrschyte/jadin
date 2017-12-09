@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: jadin.core.Agent
-Premain-Class: jadin.core.Agent
-Agent-Class: jadin.core.Agent
-

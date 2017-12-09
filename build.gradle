@@ -1,0 +1,45 @@
+subprojects {
+    apply plugin: 'java'
+}
+
+project(':jadin') {
+  sourceSets {
+    main {
+      java {
+	srcDir('src')
+      }
+    }
+  }
+  dependencies {
+    compile files(org.gradle.internal.jvm.Jvm.current().toolsJar)
+  }
+  jar {
+    manifest {
+      attributes (
+      'Main-Class': 'jadin.core.Agent',
+      'Premain-Class': 'jadin.core.Agent',
+      'Agent-Class': 'jadin.core.Agent'
+      )
+    }
+  }
+}
+
+project(':example') {
+  sourceSets {
+    main {
+      java {
+	srcDir('src')
+      }
+    }
+  }
+}
+
+project(':replacement') {
+  sourceSets {
+    main {
+      java {
+	srcDir('src')
+      }
+    }
+  }
+}
